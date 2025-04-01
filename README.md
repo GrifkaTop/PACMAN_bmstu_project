@@ -29,7 +29,8 @@ git clone https://github.com/yourname/pacman-sfml.git
 cd pacman-sfml  
 mkdir build && cd build  
 cmake .. && make  
-./pacman  
+./pacman
+```
 Windows (Visual Studio):
 Откройте папку проекта через CMake
 
