@@ -2,9 +2,7 @@
 
 **Учебный проект по ООП** — классическая аркада с нуля на C++ и SFML.  
 
-<p align="center">
-  <img src="https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif" alt="PACMAN" width="300"/>
-</p>
+![hippo](https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif)
 
 ---
 
