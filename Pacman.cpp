@@ -5,8 +5,8 @@
 using namespace GameConstants;
 
 Pacman::Pacman(const sf::Vector2f& startPosition) 
-    : direction(1, 0), nextDirection(0, 0), animationPhase(0.0f),
-      isAtIntersection(false), currentTile(0, 0) {
+    : direction(1, 0), animationPhase(0.0f),
+      isAtIntersection(false), currentTile(0, 0), prevDirection({0.0f, 0.0f}){
     
     body.setRadius(PACMAN_RADIUS);
     body.setFillColor(sf::Color(PACMAN_COLOR));
@@ -36,22 +36,26 @@ void Pacman::handleInput(const sf::Event& event, const Map& map) {
     }
 }
 
-void Pacman::update(const Map& map, [[maybe_unused]] const sf::Vector2f& targetPos, float deltaTime) {
-    // Если direction не задан - не двигаемся
-    if (direction == sf::Vector2f(0, 0)) return;
 
-    // Рассчитываем новую позицию с учетом времени кадра
+
+void Pacman::update(const Map& map, const sf::Vector2f& targetPos, float deltaTime) {
+    if (direction != prevDirection) {
+        if (direction.x != 0) { 
+            position.y = map.alignToGrid(position).y;
+        } else {
+            position.x = map.alignToGrid(position).x;
+        }
+        prevDirection = direction;
+    }
+
     sf::Vector2f newPosition = position + direction * PACMAN_SPEED * deltaTime;
 
-    // Проверяем коллизии
     if (!checkCollision(map, newPosition)) {
         position = newPosition;
     } else {
-        // Выравнивание при столкновении
         position = map.alignToGrid(position);
     }
 
-    // Обновляем позицию спрайта
     body.setPosition(position);
 }
 void Pacman::draw(sf::RenderWindow& window) const {

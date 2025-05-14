@@ -6,14 +6,14 @@
 
 class Pacman : public Unit {
 private:
+    sf::Vector2f prevDirection;
     sf::CircleShape body;
     sf::Vector2f position;
     sf::Vector2f direction;
-    sf::Vector2f nextDirection;
     float animationPhase;
     bool isAtIntersection;
     sf::Vector2i currentTile;
-    std::vector<sf::Vector2i> availableDirections; // Добавлено
+    std::vector<sf::Vector2i> availableDirections; 
 
     bool checkCollision(const Map& map, const sf::Vector2f& pos) const;
     void updateIntersectionState(const Map& map);
@@ -21,8 +21,10 @@ private:
 public:
     explicit Pacman(const sf::Vector2f& startPosition);
 
-    void handleInput(const sf::Event& event, const Map& map); // Добавлен параметр Map
+    void handleInput(const sf::Event& event, const Map& map);
     void update(const Map& map, const sf::Vector2f& targetPos, float deltaTime) override;    
+    void update_x();
+    void update_y();
     void draw(sf::RenderWindow& window) const override;
     sf::Vector2f getPosition() const override;
 };

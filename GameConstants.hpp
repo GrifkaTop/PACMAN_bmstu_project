@@ -3,7 +3,7 @@
 namespace GameConstants {
     // Размеры и параметры объектов
     constexpr int TILE_SIZE = 32;          // Размер одной клетки карты в пикселях
-    constexpr float PACMAN_RADIUS = TILE_SIZE/2  - 5.0f;
+    constexpr float PACMAN_RADIUS = TILE_SIZE/2  -5.0f;
     constexpr float GHOST_RADIUS = TILE_SIZE/2  - 5.0f;
     // Скорости движения
     constexpr float PACMAN_SPEED = 100.0f;   // Скорость пакмана (пикселей/кадр)
